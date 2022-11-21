@@ -1,0 +1,29 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}py Budget App{% endblock %}
+
+{% block navbar %}
+<!--NAVBAR-->
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#listof">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">budgetApp</a>
+        </div>
+        <div class="navbar-collapse collapse" id="listof">
+            <ul class="nav navbar-nav">
+                <li><a href="/addexpense">Add Expense</a></li>
+<!--                <li><a href="#">Dodaj autora</a></li>-->
+<!--                <li><a href="#">Dodaj książkę</a></li>-->
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+{% block page_content %}{% endblock %}
+{% endblock %}
