@@ -1,6 +1,12 @@
 {% extends "bootstrap/base.html" %}
 
-{% block title %}py Budget App{% endblock %}
+{% block title %}
+    {% if title %}
+        {{ title }} - BudgetApp
+    {% else %}
+        Hi from BudgetApp!
+    {% endif %}
+{% endblock %}
 
 {% block navbar %}
 <!--NAVBAR-->
@@ -12,11 +18,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">budgetApp</a>
+            <a class="navbar-brand" href="/">
+                <p class="text-primary">budgetApp</p></a>
         </div>
         <div class="navbar-collapse collapse" id="listof">
             <ul class="nav navbar-nav">
-                <li><a href="/addexpense">Add Expense</a></li>
+                <li><a href="{{ url_for('addexpense') }}">Add Expense</a></li>
 <!--                <li><a href="#">Dodaj autora</a></li>-->
 <!--                <li><a href="#">Dodaj książkę</a></li>-->
             </ul>
@@ -25,5 +32,26 @@
 </div>
 {% endblock %}
 {% block content %}
-{% block page_content %}{% endblock %}
+<div class="page-header" style="margin-left: 20px">
+    <h3>
+        {% block page_header %} {{ title }} {% endblock %}
+    </h3>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="btn btn-primary" href="{{ url_for('addexpense') }}" role="button">Add Expense</a>
+    </div>
+
+</div>
+<div class="container" style="margin-left: 20px">
+<!--    This is section for flashing messages-->
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-info alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% block page_content %}{% endblock %}
+</div>
 {% endblock %}

@@ -1,7 +1,56 @@
 {% extends "base.html" %}
 
-{% block title %}Index - pyBudgetApp{% endblock %}
+{% block title %} {{ title }} {% endblock %}
 
 {% block page_content %}
-<div class="page-header" style="margin-left: 20px"><h3>Welcome to YOUR Budget App!</h3></div>
+
+<div class="table-responsive-md">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Account Type</th>
+        <th scope="col">Expenses Sum</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for entity in sumup %}
+      <tr>
+        <td> {{ entity[0] }} </td>
+        <td> {{ entity[1] }} </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="table-responsive-md">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Account</th>
+        <th scope="col">Description</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for entity in spendings %}
+      <tr>
+        <td> {{ entity.spender }} </td>
+        <td> {{ entity.category }} </td>
+        <td> {{ entity.amount }} </td>
+        <td> {{ entity.account }} </td>
+        <td> {{ entity.description }} </td>
+        <td>
+          <a class="btn btn-primary" href=" {{ url_for('delete', id=entity.id) }}" role="button">
+              <span aria-hidden="true">&times;</span></a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
 {% endblock %}
