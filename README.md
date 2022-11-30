@@ -1,7 +1,7 @@
 # myBudgetApp
 
 ## Basic project description
-Project I develop to both help myself in terms of caring about financial aspect of my life, as well as gain skills in developing web applications. To be found on my GitHub profile.
+Project I develop to both help myself in terms of caring about financial aspect of my life, as well as gain skills in developing web applications.
 It was built with Flask framework, with database set up using Postgres. My goal is to implement more features in this project over time, to increase its usability.
 
 **Index / Main web app page look:**
